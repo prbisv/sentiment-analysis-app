@@ -148,13 +148,7 @@ http://127.0.0.1:5000
 
 ## 🖥️ Application Preview
 
-*(Add a screenshot here after deployment.)*
-
-Example:
-
-```
-assets/homepage.png
-```
+<img width="859" height="572" alt="Screenshot 2026-07-05 at 06 53 05" src="https://github.com/user-attachments/assets/a6d14e75-0c2a-4672-935b-09e391fff94d" />
 
 ---
 
