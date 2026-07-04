@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sentiment Analysis</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🚚 Sentiment Analysis</h1>
+
+            <p class="subtitle">
+                Analyze Indonesian Delivery Service Reviews using CNN-LSTM
+            </p>
+
+            <!-- =========================
+                 FORM
+            ========================== -->
+
+            <form method="POST">
+
+                <textarea
+                    id="review-text"
+                    name="text"
+                    placeholder="Type your review here..."
+                >{{ text }}</textarea>
+
+                <!-- Example Reviews -->
+
+                <div class="examples">
+
+                    <p class="example-title">
+                        Try an example
+                    </p>
+
+                    <p
+                        class="example-item positive"
+                        onclick="fillExample('Paket sampai lebih cepat dari estimasi, kurir sangat ramah.')"
+                    >
+                        🟢 Paket sampai lebih cepat dari estimasi, kurir sangat ramah.
+                    </p>
+
+                    <p
+                        class="example-item neutral"
+                        onclick="fillExample('Paket saya diantar sampai ke rumah.')"
+                    >
+                        🟡 Paket saya diantar sampai ke rumah.
+                    </p>
+
+                    <p
+                        class="example-item negative"
+                        onclick="fillExample('Pelayanan lambat dan paket datang dalam keadaan rusak.')"
+                    >
+                        🔴 Pelayanan lambat dan paket datang dalam keadaan rusak.
+                    </p>
+
+                </div>
+
+                <!-- Buttons -->
+
+                <div class="button-group">
+
+                    <button type="submit">
+                        Analyze
+                    </button>
+
+                    <button
+                        type="button"
+                        class="reset-btn"
+                        onclick="resetForm()"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- Error -->
+
+            {% if error %}
+
+            <div class="error-message">
+
+                {{ error }}
+
+            </div>
+
+            {% endif %}
+
+            <!-- Result -->
+
+            {% if result %}
+
+            <div class="result">
+
+                <!-- Prediction -->
+
+                <div class="prediction-header">
+
+                    <span class="badge {{ result.label|lower }}">
+
+                        <span class="emoji">
+
+                            {{ result.emoji }}
+
+                        </span>
+
+                        {{ result.label }}
+
+                    </span>
+
+                </div>
+
+                <!-- Confidence -->
+
+                <div class="confidence">
+
+                    <div class="confidence-info">
+
+                        <span>Confidence</span>
+
+                        <strong>
+
+                            {{ result.confidence }}%
+
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-fill"
+                            style="width: {{ result.confidence }}%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <!-- Probabilities -->
+
+                <h3>Probabilities</h3>
+
+                {% for label, value in result.probabilities.items() %}
+
+                <div class="probability-row">
+
+                    <span>
+
+                        {{ label }}
+
+                    </span>
+
+                    <div class="bar">
+
+                        <div
+                            class="fill {% if label == 'Positif' %}positive{% elif label == 'Netral' %}neutral{% else %}negative{% endif %}"
+                            style="width: {{ value }}%;"
+                        ></div>
+
+                    </div>
+
+                    <span>
+
+                        {{ value }}%
+
+                    </span>
+
+                </div>
+
+                {% endfor %}
+
+                <!-- Processed Text -->
+
+                <h3>Processed Text</h3>
+
+                <div class="processed-text">
+
+                    {{ result.processed_text }}
+
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function fillExample(text){
+
+            document.getElementById("review-text").value = text;
+
+        }
+
+        function resetForm(){
+
+            window.location.href = "/";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,515 @@
+/* ==================================================
+   RESET
+================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ==================================================
+   LAYOUT
+================================================== */
+body{
+
+    font-family:Inter,sans-serif;
+
+    background:#F5F7FB;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:40px;
+
+}
+
+.container{
+
+    width:100%;
+
+    max-width:800px;
+
+}
+
+.card{
+
+    background:#FFFFFF;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* ==================================================
+   TYPOGRAPHY
+================================================== */
+h1{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==================================================
+   FORM
+================================================== */
+textarea{
+
+    width:100%;
+
+    min-height:140px;
+
+    resize:none;
+
+    padding:18px;
+
+    font-size:16px;
+
+    border:1px solid #DDD;
+
+    border-radius:12px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+textarea:focus{
+
+    border-color:#4F46E5;
+
+    box-shadow:0 0 10px rgba(79,70,229,.2);
+
+}
+
+button{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    font-size:16px;
+
+    color:white;
+
+    background:#2563EB;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#1E4ED8;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==================================================
+   RESULT CARD
+================================================== */
+.result{
+
+    margin-top:35px;
+
+    padding:25px;
+
+    background:#F8FAFC;
+
+    border-radius:16px;
+
+    animation:fade .4s ease;
+
+}
+
+.result h3{
+
+    margin-top:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+/* ==================================================
+   BADGE
+================================================== */
+.prediction-header{
+
+    margin-bottom:25px;
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 28px;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    border-radius:999px;
+
+}
+
+.emoji{
+
+    font-size:22px;
+
+}
+
+.badge.positif{
+
+    background:#22C55E;
+
+}
+
+.badge.netral{
+
+    background:#F59E0B;
+
+}
+
+.badge.negatif{
+
+    background:#EF4444;
+
+}
+
+
+/* ==================================================
+   CONFIDENCE
+================================================== */
+.confidence{
+
+    margin-bottom:30px;
+
+}
+
+.confidence-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+
+}
+
+.confidence-info strong{
+
+    font-size:20px;
+
+}
+
+
+/* ==================================================
+   PROGRESS BAR
+================================================== */
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    background:#E5E7EB;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    background:#2563EB;
+
+    transition:.4s;
+
+}
+
+
+/* ==================================================
+   PROBABILITY
+================================================== */
+.probability-row{
+
+    display:grid;
+
+    grid-template-columns:90px 1fr 60px;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:15px 0;
+
+}
+
+.bar{
+
+    height:10px;
+
+    background:#ECECEC;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.fill{
+
+    height:100%;
+
+    transition:.4s;
+
+}
+
+.fill.positive{
+
+    background:#22C55E;
+
+}
+
+.fill.neutral{
+
+    background:#F59E0B;
+
+}
+
+.fill.negative{
+
+    background:#EF4444;
+
+}
+
+
+/* ==================================================
+   PROCESSED TEXT
+================================================== */
+.processed-text{
+
+    margin-top:15px;
+
+    padding:18px;
+
+    background:white;
+
+    border:1px solid #DDD;
+
+    border-radius:12px;
+
+    line-height:1.7;
+
+}
+
+
+/* ==================================================
+   ANIMATION
+================================================== */
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+@media (max-width:768px){
+
+    .card{
+
+        padding:24px;
+
+    }
+
+    .probability-row{
+
+        grid-template-columns:70px 1fr 50px;
+
+    }
+
+}
+
+/* ==================================================
+   ERROR MESSAGE
+================================================== */
+
+.error-message{
+
+    margin-top:20px;
+
+    padding:14px 18px;
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+    border:1px solid #FCA5A5;
+
+    border-radius:12px;
+
+    font-weight:500;
+
+}
+
+/* ==================================================
+   EXAMPLE REVIEWS
+================================================== */
+
+.examples{
+
+    margin-top:14px;
+
+    margin-bottom:20px;
+
+}
+
+.example-title{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#6B7280;
+
+    margin-bottom:10px;
+
+}
+
+.example-item{
+
+    margin-bottom:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.example-item:hover{
+
+    transform:translateX(6px);
+
+    text-decoration:underline;
+
+}
+
+.example-item.positive{
+
+    color:#15803D;
+
+}
+
+.example-item.neutral{
+
+    color:#B45309;
+
+}
+
+.example-item.negative{
+
+    color:#B91C1C;
+
+}
+
+/* ==================================================
+   BUTTON GROUP
+================================================== */
+
+.button-group{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:24px;
+
+}
+
+.button-group button{
+
+    flex:1;
+
+    margin-top:0;
+
+}
+
+.reset-btn{
+
+    background:#F3F4F6;
+
+    color:#374151;
+
+    border:none;
+
+}
+
+.reset-btn:hover{
+
+    background:#E5E7EB;
+
+    color:#111827;
+
+}

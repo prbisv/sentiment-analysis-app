@@ -1,0 +1,8 @@
+{
+    "maxlen": 100,
+    "embedding_dim": 128,
+    "vocab_size": 2412,
+    "padding": "post",
+    "truncating": "post",
+    "lower": true
+}
